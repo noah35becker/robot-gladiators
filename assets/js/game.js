@@ -171,18 +171,24 @@ function startGame(){
 
 function endGame(){
     
-    if (playerInfo.health > 0){
-        window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + '.');
-    }else{
-        window.alert("You've lost your robot in battle.");
-    }
+    window.alert("The game has now ended. Let's see how you did!");
+
+    var highScore = localStorage.getItem('highscore');
+
+    highScore == highScore || 0;
+
+    if (playerInfo.money > highScore){
+        localStorage.setItem('highscore',playerInfo.money);
+        localStorage.setItem('name',playerInfo.name);
+        alert(playerInfo.name + ' now holds the high score of ' + playerInfo.money + '!');
+    }else
+        alert(playerInfo.name + ' did not beat the current high score of ' + highScore + '. Maybe next time!');
 
     var playAgainConfirm = window.confirm('Would you like to play again?');
-    if (playAgainConfirm){
-        startGame();
-    }else{
+    if (playAgainConfirm)
+        startGame()
+    else
         window.alert('Thank you for playing Robot Gladiators! Come back soon!');
-    }
 
 }
 
